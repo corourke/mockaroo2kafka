@@ -19,6 +19,14 @@ There are also three datasets that relate to the scan data that will be generate
 
 Pay careful attention to the lines in the script that call Mockaroo, and that call the Kafka CLI. Be sure they match your particular situation. You will also need to set, or pass in, the correct CLUSTER_ID and TOPIC for your setup.
 
+| Directories / Files                      | Purpose                                                      |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| `datasets/`                              | Data files related to the scans data to create an analysis scenario. Two of the tables are needed by mockaroo to reference valid foreign key values. There are also some example scan output files in there. |
+| `gen_mocks_to_kafka.sh`                  | The main generator script.                                   |
+| `gen_mocks_to_s3.sh`                     | An alternative script that uploads scan files to an S3 bucket instead of Kafka. |
+| `mockaroo/`                              | The scenario to import into mockaroo                         |
+| `start_threads.sh` and `stop_threads.sh` | Scripts to start/stop multiple instances of the generator script if you need to ramp up the data volume. |
+
 ### Running
 
 You can either change the variable defaults in the scripts, or pass them in on the command line:
