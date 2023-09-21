@@ -1,0 +1,36 @@
+category_code,category_name,category_description,2012_sales,avg_price,frequency
+20100,Groceries,Groceries & other food items for human consumption off the premises,645921455,2,0.6669
+20140,Liquor,"Packaged liquor, wine, & beer",85429937,10,0.0176
+20150,Tobacco,"Cigars, cigarettes, tobacco, & smokers' accessories, excl sales from vending machines operated by others",69208152,6,0.0238
+20160,Health,"Drugs, health aids, beauty aids, incl cosmetics",464684628,12,0.0800
+20180,Household,"Household soaps, detergents, cleaners, & cleaning supplies",34829055,4,0.0180
+20190,Paper Goods,"Paper & related products, including paper towels, toilet tissue, wraps, bags, foils, etc.",32525440,4,0.0168
+20200,"Clothing, Men’s","Men's wear, incl accessories",75516147,20,0.0078
+20220,"Clothing, Women’s","Women's, juniors', & misses' wear, incl accessories",157720129,30,0.0109
+20240,"Clothing, Children’s","Children's wear, incl boys', girls', & infants' & toddlers' clothing & accessories",37091820,15,0.0051
+20250,"Clothing, Unisex",Costumes & unisex clothing,3459396,15,0.0005
+20260,Footwear,"Footwear, incl accessories",63853988,60,0.0022
+20270,Sewing,"Sewing, knitting, needlework goods, incl fabrics, patterns, sewing supplies, notions, yarns, laces, trimmings, needlework kits, etc.",5876842,15,0.0008
+20280,Housewares,"Curtains, draperies, blinds, slipcovers, bed & table coverings",31726790,15,0.0044
+20300,Appliances,Major household appliances,37122738,400,0.0002
+20310,Personal Care,Small household appliances & personal care appliances,14033515,100,0.0003
+20320,Television,"TVs, DVD/Blu-ray players & recorders, camcorders, portable video players, e-book readers,DVDs, Blu-ray Discs, etc.",39527331,150,0.0005
+20330,Audio,"Audio equipment, musical instruments (new & used), radios, audio electronic components, CDs, records, tapes, audio books, sheet music, accessories",27765979,100,0.0006
+20340,Furniture,"Furniture, sleep equipment & outdoor/patio furniture",71318336,400,0.0004
+20360,Flooring,Flooring & floor coverings,27223406,120,0.0005
+20370,Computers,"Computer hardware, software, & supplies, incl computer game software & tablet computers",81062821,150,0.0011
+20380,Kitchenware,Kitchenware & home furnishings,57204456,7,0.0169
+20400,Jewelry,"Jewelry, incl watches, watch attachments, novelty jewelry, estate/antique jewelry, etc.",50814143,120,0.0009
+20420,Books,"Books, incl e-books",16701973,10,0.0034
+20440,Photographic,Photographic equipment & supplies,8299976,10,0.0017
+20460,Toys and Hobby,"Toys, hobby goods, & games",33294271,8,0.0086
+20490,Eyewear,"Optical goods, incl eyeglasses, contact lenses, sunglasses, etc.",13990436,50,0.0006
+20530,Sporting Goods,Sporting goods & recreational equipment,47670139,20,0.0049
+20600,Hardware and Tools,"Hardware, tools, & plumbing & electrical supplies",83949656,5,0.0347
+20620,Lawn and Garden,"Lawn, garden, & farm equipment & supplies",79567732,15,0.0110
+20640,Lumber,Dimensional lumber & other building/structural materials & supplies,93248647,5,0.0385
+20670,Paint,Paint & sundries,22368827,10,0.0046
+20690,Wallcoverings,Wallpaper & other flexible wallcoverings,562602,10,0.0001
+20730,Automotive,"Automotive lubricants, incl oil, greases, etc.",10405102,5,0.0043
+20800,Pet Supplies,"Pets, pet foods, & pet supplies",40038265,8,0.0103
+20810,Baby,"Baby goods not elsewhere classified, incl bottles, monitors, carriers, swings, etc.",5423935,10,0.0011

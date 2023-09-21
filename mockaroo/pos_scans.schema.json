@@ -1,0 +1,52 @@
+{
+  "id": 182590,
+  "num_rows": 100,
+  "file_format": "csv",
+  "name": "pos_scans",
+  "include_header": true,
+  "columns": [
+    {
+      "name": "file_seq_id",
+      "null_percentage": 0,
+      "type": "Sequence",
+      "start": 1,
+      "step": 1,
+      "repeat": 1,
+      "formula": null
+    },
+    {
+      "name": "store_id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "retail_stores",
+      "column": "store_id",
+      "selectionStyle": "weighted",
+      "distribution": null,
+      "formula": ""
+    },
+    {
+      "name": "scan_datetime",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "(now() - seconds(random(0,59)))",
+      "formula": ""
+    },
+    {
+      "name": "item_upc",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "item_master",
+      "column": "ITEM_UPC",
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": ""
+    },
+    {
+      "name": "unit_qty",
+      "null_percentage": 0,
+      "type": "Geometric Distribution",
+      "probability": "0.5",
+      "formula": ""
+    }
+  ]
+}
