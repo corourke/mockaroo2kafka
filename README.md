@@ -4,6 +4,8 @@ Scripts that call the Mockaroo API, and then push results into a Kafka topic.
 
 This simulates a retail point-of-sale (POS) scenario where barcode scans are happening at dozens of stores across the US. Multiple instances of the script can be run simultaneously to ramp up the data volume.
 
+![table_relationships.drawio](./table_relationships.drawio.png)
+
 ### Prerequisites
 
 - Mockaroo account and schema to generate rows
