@@ -1,9 +1,9 @@
 {
   "id": 182590,
   "num_rows": 100,
-  "file_format": "csv",
+  "file_format": "json",
   "name": "pos_scans",
-  "include_header": true,
+  "array": false,
   "columns": [
     {
       "name": "file_seq_id",
@@ -28,7 +28,7 @@
       "name": "scan_datetime",
       "null_percentage": 0,
       "type": "Formula",
-      "value": "(now() - seconds(random(0,59)))",
+      "value": "(now() - minutes(random(0,4)) - seconds(random(0,59)))",
       "formula": ""
     },
     {

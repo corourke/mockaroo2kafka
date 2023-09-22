@@ -1,0 +1,17 @@
+{
+  "doc": "Retail POS scan records.",
+  "name": "scans",
+  "namespace": "com.onetable.scans",
+  "type": "array",
+  "items": {
+    "type": "record",
+    "name": "scan",
+    "fields": [
+      { "name": "file_seq_id", "type": "int" },
+      { "name": "store_id", "type": "int" },
+      { "name": "scan_datetime", "type": "string" },
+      { "name": "item_upc", "type": "string" },
+      { "name": "unit_qty", "type": "int" }
+    ]
+  }
+}

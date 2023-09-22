@@ -24,8 +24,8 @@ cleanup ()
 
 trap cleanup SIGINT SIGTERM
 
-echo "START" ${THREADS} "threads."  `date` >> $STATUS_FILE
-for (( n=0; n<$THREADS; n++))
+echo "STARTING" ${THREADS} "threads --"  `date` >> $STATUS_FILE
+for (( n=1; n<=$THREADS; n++))
 do
   DATA_DIR=${DATA_DIR} THREAD=${n} $SCRIPT &
   sleep 10

@@ -10,9 +10,17 @@
 # Default Values
 : "${DATA_DIR:=/tmp/scans}"
 : "${PREFIX:=scan}"
-: "${THREAD:=1}" # Used when multiple instances of this script are running
+: "${THREAD:=0}" # Used when multiple instances of this script are running
+: "${SLEEP:=300}" # Time to sleep in between batches
 
+# The status file both logs activity and controls script running
 STATUS_FILE=$DATA_DIR/data_loader_status
+
+# If THREAD is 0, means we are not running multiple instances
+# We are running standalone, so create the status file
+if [ $THREAD -eq 0 ]; then 
+	echo "EPOCH" `date` > $STATUS_FILE
+fi
 
 # Prechecks for data directories
 if [ ! -d $DATA_DIR ]; then
@@ -20,8 +28,8 @@ if [ ! -d $DATA_DIR ]; then
   exit 1
 fi
 if [ ! -f $STATUS_FILE ]; then
-  echo "creating status file"
-  echo "EPOCH" `date` > $STATUS_FILE
+  echo "No status file, which shouldn't be as we are THREAD: " $THREAD
+  exit 1
 fi
 if [ ! -d $DATA_DIR/stage ]; then
   echo "creating $DATA_DIR/stage directory"
@@ -32,10 +40,11 @@ if [ ! -d $DATA_DIR/processed ]; then
   mkdir $DATA_DIR/processed
 fi
 
-# Check that AWS CLI is installed
+
+# Check that the Confluent CLI is installed
 if [[ ( ! -d ~/.confluent ) || ( ! -f ~/.confluent/config.json ) ]]; then
   cat << EOF
-Confluent Command Line Interface not installed or configured."
+Confluent Command Line Interface not installed or configured.
 See:  https://docs.confluent.io/confluent-cli/current/beginner-cloud.html
 TL;DR;
   $ brew install confluentinc/tap/cli
@@ -71,9 +80,9 @@ do
   timestamp=`date "+%s"`
   file_name=${PREFIX}_${THREAD}_${timestamp}.json
   data_file="$DATA_DIR/stage/$file_name"
-  rows="$[${RANDOM}%100+151]" # Randomizes the number of rows, currently between 151-251 rows
+  rows="$[${RANDOM}%10+1]" # Randomizes the number of rows
   # Replace the mockaroo call with the one given to you by mockaroo
-  # Note you can go to 1000 rows on mockaroo for free
+  # Note you can go to 1000 rows and 200 requests/day on mockaroo for free
   curl --silent "https://api.mockaroo.com/api/91b59790?count=${rows}&key=76b93870" > $data_file
   log_message "GENR" $rows $file_name `date`
   data_file=""
@@ -86,14 +95,13 @@ do
       log_message "ERR_" $THREAD "Exiting due to upload error" `date`
       exit;
     fi
-    log_message "SENT" $THREAD $staged_file `date` 
+    log_message "SENT" $staged_file `date` 
     mv $staged_file $DATA_DIR/processed
   done
 
   # Check the datetime formula in the mockaroo schema to ensure that it gives you the right
   # timeframe. Ex: this formula produces times within the last 5 minutes
   # (now() - minutes(random(0,4)) - seconds(random(0,59)))
-  sleep 30
+  sleep $SLEEP
 done
 log_message "EXIT" $THREAD `date`
-
