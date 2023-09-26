@@ -1,21 +1,32 @@
 {
-  "id": 182590,
-  "num_rows": 100,
+  "id": 559392,
+  "num_rows": 10,
   "file_format": "json",
-  "name": "pos_scans",
+  "name": "batched_scans",
   "array": false,
   "columns": [
     {
-      "name": "file_seq_id",
+      "name": "batch",
       "null_percentage": 0,
-      "type": "Sequence",
-      "start": 1,
-      "step": 1,
-      "repeat": 1,
+      "type": "JSON Array",
+      "minItems": 6,
+      "maxItems": 12,
       "formula": null
     },
     {
-      "name": "store_id",
+      "name": "batch_id",
+      "null_percentage": 0,
+      "type": "ULID",
+      "formula": null
+    },
+    {
+      "name": "batch.scan_id",
+      "null_percentage": 0,
+      "type": "ULID",
+      "formula": null
+    },
+    {
+      "name": "batch.store_id",
       "null_percentage": 0,
       "type": "Dataset Column",
       "dataset": "retail_stores",
@@ -25,14 +36,14 @@
       "formula": ""
     },
     {
-      "name": "scan_datetime",
+      "name": "batch.scan_datetime",
       "null_percentage": 0,
       "type": "Formula",
-      "value": "(now() - minutes(random(0,4)) - seconds(random(0,59)))",
+      "value": "(now() - seconds(random(0,59)))",
       "formula": ""
     },
     {
-      "name": "item_upc",
+      "name": "batch.item_upc",
       "null_percentage": 0,
       "type": "Dataset Column",
       "dataset": "item_master",
@@ -42,7 +53,7 @@
       "formula": ""
     },
     {
-      "name": "unit_qty",
+      "name": "batch.unit_qty",
       "null_percentage": 0,
       "type": "Geometric Distribution",
       "probability": "0.5",

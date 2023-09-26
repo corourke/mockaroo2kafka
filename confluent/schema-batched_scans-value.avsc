@@ -1,0 +1,28 @@
+{
+  "type": "record",
+  "name": "batched_scans",
+  "namespace": "com.acme",
+  "fields": [
+    {
+      "name": "batch",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "scan",
+          "fields": [
+            { "name": "scan_id", "type": "string" },
+            { "name": "store_id", "type": "int" },
+            { "name": "scan_datetime", "type": "string" },
+            { "name": "item_upc", "type": "string" },
+            { "name": "unit_qty", "type": "int" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "batch_id",
+      "type": "string"
+    }
+  ]
+}

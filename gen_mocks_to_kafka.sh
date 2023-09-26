@@ -2,21 +2,20 @@
 # Call Mockaroo to get data, and upload it to a Kafka cluster
 
 # You must have the Confluent CLI installed and configured. 
+./check_confluent_cli.sh || exit 1
 
 # Configuration
 : "${CLUSTER_ID:=lkc-7p0wzp}" # Set this to your cluster ID
-: "${TOPIC:=pos_scans}" 
+: "${TOPIC:=batched_scans}" 
+: "${DATA_DIR:=/tmp/datagen/$TOPIC}"
+: "${PREFIX:=$TOPIC}"
+: "${SLEEP:=60}" # Time to sleep in between batches
 
-# Default Values
-: "${DATA_DIR:=/tmp/scans}"
-: "${PREFIX:=scan}"
-: "${THREAD:=0}" # Used when multiple instances of this script are running
-: "${SLEEP:=300}" # Time to sleep in between batches
-
+# Non-zero when multiple instances of this script are running
+: "${THREAD:=0}" 
 # The status file both logs activity and controls script running
-STATUS_FILE=$DATA_DIR/data_loader_status
+STATUS_FILE=$DATA_DIR/.status
 
-# If THREAD is 0, means we are not running multiple instances
 # We are running standalone, so create the status file
 if [ $THREAD -eq 0 ]; then 
 	echo "EPOCH" `date` > $STATUS_FILE
@@ -41,21 +40,6 @@ if [ ! -d $DATA_DIR/processed ]; then
 fi
 
 
-# Check that the Confluent CLI is installed
-if [[ ( ! -d ~/.confluent ) || ( ! -f ~/.confluent/config.json ) ]]; then
-  cat << EOF
-Confluent Command Line Interface not installed or configured.
-See:  https://docs.confluent.io/confluent-cli/current/beginner-cloud.html
-TL;DR;
-  $ brew install confluentinc/tap/cli
-  $ confluent login --save
-  $ confluent api-key store --resource <CLUSTER _ID>
-  $ confluent api-key use <KAFKA API KEY>
-EOF
-  exit 1
-fi
-set -e
-
 # Function to print to console and status file
 log_message () {
   echo $*
@@ -73,6 +57,7 @@ cleanup ()
 trap cleanup SIGINT SIGTERM
 log_message "START" $THREAD `date`
 
+
 # Create and upload files until told to stop
 while [ `grep -c "^STOP" $STATUS_FILE` -eq 0 ] 
 do
@@ -80,10 +65,10 @@ do
   timestamp=`date "+%s"`
   file_name=${PREFIX}_${THREAD}_${timestamp}.json
   data_file="$DATA_DIR/stage/$file_name"
-  rows="$[${RANDOM}%10+1]" # Randomizes the number of rows
+  rows="$[${RANDOM}%50+10]" # Randomizes the number of rows
   # Replace the mockaroo call with the one given to you by mockaroo
   # Note you can go to 1000 rows and 200 requests/day on mockaroo for free
-  curl --silent "https://api.mockaroo.com/api/91b59790?count=${rows}&key=76b93870" > $data_file
+  curl --silent "https://api.mockaroo.com/api/3d0e46b0?count=${rows}&key=76b93870" > $data_file
   log_message "GENR" $rows $file_name `date`
   data_file=""
 
