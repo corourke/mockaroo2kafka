@@ -63,7 +63,7 @@ while [ `grep -c "^STOP" $STATUS_FILE` -eq 0 ]
 do
   # Get new sample data rows
   timestamp=`date "+%s"`
-  file_name=${PREFIX}_${THREAD}_${timestamp}.json
+  file_name=${PREFIX}-${THREAD}-${timestamp}.json
   data_file="$DATA_DIR/stage/$file_name"
   rows="$[${RANDOM}%50+10]" # Randomizes the number of rows
   # Replace the mockaroo call with the one given to you by mockaroo
