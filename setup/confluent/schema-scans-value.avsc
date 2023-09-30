@@ -1,0 +1,33 @@
+{
+  "doc": "Retail POS scan record.",
+  "name": "scan",
+  "namespace": "com.onetable.pos_scans",
+  "type": "record",
+  "fields": [
+    {
+      "doc": "Unique ID.",
+      "name": "scan_id",
+      "type": "string"
+    },
+    {
+      "doc": "The retail store ID.",
+      "name": "store_id",
+      "type": "int"
+    },
+    {
+      "doc": "SQL date time format.",
+      "name": "scan_datetime",
+      "type": "string"
+    },
+    {
+      "doc": "Item barcode.",
+      "name": "item_upc",
+      "type": "string"
+    },
+    {
+      "doc": "Quantity purchased.",
+      "name": "unit_qty",
+      "type": "int"
+    }
+  ]
+}
