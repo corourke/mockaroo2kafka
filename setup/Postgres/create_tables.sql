@@ -3,7 +3,7 @@ CREATE TABLE item_categories (
     category_code INTEGER PRIMARY KEY, 
     category_name VARCHAR(255), 
     category_description VARCHAR(255),
-    "2012_sales" INTEGER, 
+    ytd_sales INTEGER, 
     avg_price INTEGER, 
     _frequency NUMERIC -- mockaroo
 );

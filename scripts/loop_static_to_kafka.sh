@@ -9,7 +9,7 @@
 : "${TOPIC:=batched_scans}" 
 : "${DATA_DIR:=/tmp/datagen/$TOPIC}"
 : "${PREFIX:=$TOPIC}"
-: "${SLEEP:=60}" # Time to sleep in between batches
+: "${SLEEP:=600}" # Time to sleep in between batches
 
 # Non-zero when multiple instances of this script are running
 : "${THREAD:=0}" 

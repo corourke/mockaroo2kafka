@@ -1,4 +1,4 @@
-category_code,category_name,category_description,2012_sales,avg_price,frequency
+category_code,category_name,category_description,ytd_sales,avg_price,frequency
 20100,Groceries,Groceries & other food items for human consumption off the premises,645921455,2,0.6669
 20140,Liquor,"Packaged liquor, wine, & beer",85429937,10,0.0176
 20150,Tobacco,"Cigars, cigarettes, tobacco, & smokers' accessories, excl sales from vending machines operated by others",69208152,6,0.0238
