@@ -1,11 +1,16 @@
 {
-  "doc": "Retail POS scan record.",
+  "doc": "Flattened Retail POS scan record.",
   "name": "scan",
-  "namespace": "com.onetable.pos_scans",
+  "namespace": "com.acme",
   "type": "record",
   "fields": [
     {
-      "doc": "Unique ID.",
+      "doc": "Origin Batch ID.",
+      "name": "batch_id",
+      "type": "string"
+    },
+    {
+      "doc": "Unique Scan ID.",
       "name": "scan_id",
       "type": "string"
     },

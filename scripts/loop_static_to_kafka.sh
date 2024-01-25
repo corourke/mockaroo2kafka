@@ -66,6 +66,7 @@ do
     fi
     log_message "SENT" $staged_file `date` 
     sleep $SLEEP
+    if [ `grep -c "^STOP" $STATUS_FILE` -ne 0 ] ; then break; fi
   done
 done
 log_message "EXIT" $THREAD `date`
