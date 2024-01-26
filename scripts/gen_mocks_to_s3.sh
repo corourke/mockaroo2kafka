@@ -84,6 +84,7 @@ do
     aws s3 cp $staged_file ${S3_LOCATION}
     if [ $? -ne 0 ]; then
       log_message "ERR_" $THREAD "Exiting due to upload error" `date`
+      log_message "STOP" `date`
       exit;
     fi
     log_message "SENT" $staged_file `date` 

@@ -78,6 +78,7 @@ do
     confluent kafka topic produce $TOPIC --cluster $CLUSTER_ID < $staged_file
     if [ $? -ne 0 ]; then
       log_message "ERR_" $THREAD "Exiting due to upload error" `date`
+      log_message "STOP" `date`
       exit;
     fi
     log_message "SENT" $staged_file `date` 
